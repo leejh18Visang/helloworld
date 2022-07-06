@@ -8,7 +8,7 @@ on: #e
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
@@ -20,3 +20,11 @@ jobs:
           who-to-greet: "Macbook pro"
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
+
+pwd-ls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pwd-ls
+        run: |
+          pwd # 현재 경로 보는거
+          ls -al # 파일 리스트 출력
