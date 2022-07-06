@@ -1,6 +1,6 @@
 name: CI
 
-on: #e
+on:
   push:
     branches: [ "main" ]
   pull_request:
@@ -10,23 +10,13 @@ on: #e
   workflow_dispatch:
 
 jobs:
-  run-github-actions:
+  test-shell-command:
+    name: test-shell-command
     runs-on: ubuntu-latest
     steps:
-      - name: Simple JS Axtion
-        id: greet
-        uses: actions/hello-world-javascript-action@main # ← main은 브랜치 이름입니다. tag이름이 올수도 있어요. v1 등?
-        with:
-          who-to-greet: "Macbook pro"
-      - name: Log Greeting Time
-        run: echo "${{ steps.greet.outputs.time }}"
-
-  pwd-ls:
-      runs-on: ubuntu-latest
-      steps:
-        - name: checkout
-          uses: actions/checkout@v
-          name: pwd-ls
-          run: |
-            pwd # 현재 경로 보는거
-            ls -al # 파일 리스트 출력
+      - name: echo a string
+        run: echo "hello world"
+      - name: multiline script
+        run: |
+          node -v
+          npm -v
